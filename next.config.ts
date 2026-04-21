@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Edge runtime is set per-route via `export const runtime = 'edge'`
 };
 
 export default nextConfig;
