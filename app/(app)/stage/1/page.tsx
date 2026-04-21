@@ -1,5 +1,7 @@
 'use client'
 
+export const runtime = 'edge';
+
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'

@@ -1,5 +1,7 @@
 'use client'
 
+export const runtime = 'edge';
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { CFAccounts } from '@/components/settings/cf-accounts'
 import { 

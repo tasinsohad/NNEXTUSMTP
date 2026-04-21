@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { getRequestContext } from '@cloudflare/next-on-pages';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
