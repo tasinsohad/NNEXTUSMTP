@@ -6,7 +6,7 @@ import { users, authSessions, sessions } from '@/db/schema'
 import { eq } from 'drizzle-orm'
 import { cookies } from 'next/headers'
 
-export const runtime = 'edge'
+export const dynamic = 'force-dynamic';
 
 export default async function AppLayout({
   children,

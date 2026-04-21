@@ -1,3 +1,5 @@
+import type { DomainPlan } from '@/lib/planner';
+
 export type ServerType = 'mailcow' | 'mailu' | 'iredmail' | 'custom'
 export type JobType = 'dns_push' | 'mailbox_create' | 'dkim_fetch' | 'dkim_inject'
 export type JobStatus = 'pending' | 'processing' | 'done' | 'failed'

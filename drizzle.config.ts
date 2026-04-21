@@ -1,5 +1,3 @@
-import type { Config } from 'drizzle-kit';
-
 export default {
   schema: './db/schema.ts',
   out: './db/migrations',
@@ -9,4 +7,4 @@ export default {
     databaseId: String(process.env.CLOUDFLARE_DATABASE_ID || ''),
     token: String(process.env.CLOUDFLARE_D1_TOKEN || ''),
   },
-} satisfies Config;
+};

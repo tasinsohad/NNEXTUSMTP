@@ -1,7 +1,6 @@
 import { users, authSessions } from '@/db/schema';
 import { eq } from 'drizzle-orm';
 import { getDb } from '@/db';
-import type { CloudflareEnv } from '@/env';
 
 const SESSION_COOKIE_NAME = 'nxt_session';
 const SESSION_DURATION_DAYS = 30;
@@ -99,7 +98,7 @@ export function getSessionDurationDays(): number {
  * Verify a session token against D1 and return the user ID
  * Used in middleware and server-side layout
  */
-export async function verifySession(env: CloudflareEnv, token: string): Promise<{ userId: string; email: string } | null> {
+export async function verifySession(env: any, token: string): Promise<{ userId: string; email: string } | null> {
   if (!token) return null;
 
   const db = getDb(env);
@@ -130,7 +129,7 @@ export async function verifySession(env: CloudflareEnv, token: string): Promise<
 /**
  * Create a new session for a user and return the token
  */
-export async function createSession(env: CloudflareEnv, userId: string): Promise<string> {
+export async function createSession(env: any, userId: string): Promise<string> {
   const db = getDb(env);
   const token = generateToken();
   const expiresAt = getExpiryDate();
@@ -147,7 +146,7 @@ export async function createSession(env: CloudflareEnv, userId: string): Promise
 /**
  * Delete a session by token
  */
-export async function deleteSession(env: CloudflareEnv, token: string): Promise<void> {
+export async function deleteSession(env: any, token: string): Promise<void> {
   const db = getDb(env);
   await db.delete(authSessions).where(eq(authSessions.token, token));
 }
@@ -155,7 +154,7 @@ export async function deleteSession(env: CloudflareEnv, token: string): Promise<
 /**
  * Register a new user — returns user id or throws
  */
-export async function registerUser(env: CloudflareEnv, email: string, password: string): Promise<string> {
+export async function registerUser(env: any, email: string, password: string): Promise<string> {
   const db = getDb(env);
   const passwordHash = await hashPassword(password);
 
@@ -170,7 +169,7 @@ export async function registerUser(env: CloudflareEnv, email: string, password: 
 /**
  * Authenticate a user — returns user id or null
  */
-export async function authenticateUser(env: CloudflareEnv, email: string, password: string): Promise<string | null> {
+export async function authenticateUser(env: any, email: string, password: string): Promise<string | null> {
   const db = getDb(env);
 
   const [user] = await db.select()
